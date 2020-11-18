@@ -119,30 +119,14 @@ nlu:
 - intent: give_section
   examples: |
     - je suis en [licence 1](SECTION) [informatique] (FIELD)
-    - je suis en [licence 2](SECTION) [informatique] (FIELD)
-    - je suis en [licence 3](SECTION) [informatique] (FIELD)
     - je suis en [l1](SECTION) [informatique] (FIELD)
-    - je suis en [l2](SECTION) [informatique] (FIELD)
-    - je suis en [l3](SECTION) [informatique] (FIELD)
     - je suis en [master 1](SECTION) [informatique] (FIELD)
-    - je suis en [master 2](SECTION) [informatique] (FIELD)
-    - je suis en [doctorat](SECTION) [informatique] (FIELD)
     - [l1] (SECTION) [informatique] (FIELD)
-    - [l2] (SECTION) [informatique] (FIELD)
-    - [l3] (SECTION) [informatique] (FIELD)
-    - [m1] (SECTION) [informatique] (FIELD)
-    - [m2] (SECTION) [informatique] (FIELD)
     - [licence 1] (SECTION)
-    - [licence 2] (SECTION)
-    - [licence 3] (SECTION)
-    - [master 1] (SECTION)
-    - [master 2] (SECTION)
-    - [doctorat] (SECTION)
-    - [doctorant] (SECTION)
-    - [master 2](SECTION)
     - je suis en [master 2](SECTION)
     - [l1] (SECTION) [classique] (GROUP)
     - [master 2] (SECTION) [alternant] (GROUP)
+    - [informatique] (FIELD)
 
 - intent: give_group
   examples: |
@@ -155,3 +139,50 @@ nlu:
     - groupe [classique](GROUP)
     - [classique](GROUP)
     - je suis dans le groupe des [classique](GROUP)
+
+- intent: give_field
+  examples: |
+    - je suis en [informatique] (FIELD)
+    - [informatique] (FIELD)
+    - mon domaine d'étude est [informique] (FIELD)
+
+#- lookup: SECTION
+#  files: |
+#    - data/db/section.yml
+
+- lookup: SECTION
+  examples: |
+    - licence 1
+    - licence 2
+    - licence 3
+    - master 1
+    - master 2
+    - doctorant
+    - doctorat
+    - l1
+    - l2
+    - l3
+    - m1
+    - m2
+    - première année de licence
+    - deuxième année de licence
+    - troisième année de licence
+    - première année de master
+    - deuxième année de master
+
+- lookup: GROUP
+  examples: |
+    - alternant
+    - classique
+    - application 1
+    - application 2
+    - application 3
+    - application 4
+    - e-commerce
+    - e-com
+    - ingedoc
+    - ingenieur documentaire
+
+- lookup: FIELD
+  examples: |
+    - informatique

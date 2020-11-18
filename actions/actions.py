@@ -9,6 +9,8 @@
 
 from typing import Any, Text, Dict, List
 
+import requestAPI as api
+
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
@@ -21,6 +23,8 @@ class ActionAPI(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        api.getallgroup()
         section = tracker.get_slot('SECTION')
         field = tracker.get_slot('FIELD')
         group = tracker.get_slot('GROUP')
