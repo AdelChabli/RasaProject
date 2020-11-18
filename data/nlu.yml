@@ -1,0 +1,120 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - salut
+    - bonjour
+    - bonsoir
+    - coucou
+    - wesh
+    - yo
+
+- intent: goodbye
+  examples: |
+    - bonne après midi
+    - bonne fin de soirée
+    - bonne journée
+    - cya
+    - a+
+    - aurevoir
+    - à bientôt
+    - je m'envais
+    - bye
+    - bye bye
+    - bonne nuit
+    - on se voit plus tard
+    - j'y vais
+    - aller a+
+    - je me déconnecte
+
+- intent: affirm
+  examples: |
+    - yes
+    - oui
+    - en effet
+    - évidemment
+    - ça me va
+    - ok
+    - d'accord
+    - on se fait ça
+    - c'est d'accord
+    - j'accepte
+    - ouais
+    - confirmer
+
+- intent: deny
+  examples: |
+    - no
+    - non
+    - jamais
+    - pas du tout
+    - bah non
+    - je pense pas
+    - ça arrivera pas
+    - j'aime pas
+    - je préfère pas
+    - pas moyen
+
+- intent: mood_great
+  examples: |
+    - je vais bien
+    - bien
+    - super bien
+    - je me sens bien
+    - ça va
+    - je suis bien
+    - je vais sauver le monde
+    - tellement bien
+    - je suis de bonne humeur
+    - je suis content
+
+- intent: mood_unhappy
+  examples: |
+    - quelle mauvaise journée
+    - je vais pas bien
+    - je suis triste
+    - je me sens vraiment pas bien
+    - je vais mal
+    - je suis de mauvaise humaine
+    - je suis malade
+    - je suis pas content
+    - je suis fâché
+    - je suis déçu
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: nothing
+  examples: |
+    - Rien
+    - tu peux rien faire
+    - Je ne veux rien
+    - Absolument rien
+
+- intent: ask_info
+  examples: |
+    - Que peux tu faire pour moi ?
+    - Tu sais faire quoi ?
+    - Tu peux faire quoi ?
+    - Dit moi ce que tu peux faire
+    - Que me proposes tu ?
+
+- intent: ask_schedule
+  examples: |
+    - Donne moi mon emploi du temps ?
+    - emploi du temps
+    - mon planning
+    - Donne moi mes cours
+    - Affiche moi mon emploi du temps
+    - affiche moi mes cours
+    - j'aimerai connaitre mon emploi du temps
+    - Donne moi mon planning
+    - C'est quoi mon planning

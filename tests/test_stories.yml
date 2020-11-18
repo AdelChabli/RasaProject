@@ -1,0 +1,134 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+- story: happy path 1
+  steps:
+  - user: |
+      Salut toi !
+    intent: greet
+  - action: utter_greet
+  - user: |
+      tu vas bien ?
+    intent: mood_great
+  - action: utter_happy
+  - action: utter_can_do_for_you
+  - user: |
+      Rien du tout
+    intent: nothing
+  - action: utter_goodbye
+
+- story: happy path 2
+  steps:
+  - user: |
+      Bonjour
+    intent: greet
+  - action: utter_greet
+  - user: |
+      Comment vas-tu ?
+    intent: mood_great
+  - action: utter_happy
+  - action: utter_can_do_for_you
+  - user: |
+      Aurevoir
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: happy path 3
+  steps:
+  - user: |
+      Salut
+    intent: greet
+  - action: utter_greet
+  - user: |
+      Bien et toi ?
+    intent: mood_great
+  - action: utter_happy
+  - action: utter_can_do_for_you
+  - user: |
+      Tu sais faire quoi ?
+    intent: ask_info
+  - action: utter_info
+
+- story: sad path 1
+  steps:
+  - user: |
+      Bonsoir
+    intent: greet
+  - action: utter_greet
+  - user: |
+      Je vais pas bien
+    intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - user: |
+      Oui
+    intent: affirm
+  - action: utter_happy
+  - action: utter_can_do_for_you
+  - user: |
+      Tu sais faire quoi ?
+    intent: ask_info
+  - action: utter_info
+
+- story: sad path 2
+  steps:
+  - user: |
+      bonjour
+    intent: greet
+  - action: utter_greet
+  - user: |
+      Je vais mal
+    intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - user: |
+      pas vraiment
+    intent: deny
+  - action: utter_failed
+  - action: utter_can_do_for_you
+  - user: |
+      Donne moi mon emploi du temps
+    intent: ask_schedule
+  - action: utter_schedule
+
+- story: sad path 3
+  steps:
+  - user: |
+      Hey
+    intent: greet
+  - action: utter_greet
+  - user: |
+      ça va pas bien
+    intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - user: |
+      Oui merci
+    intent: deny
+  - action: utter_success
+  - action: utter_can_do_for_you
+  - user: |
+      Que peux tu faire pour moi ?
+    intent: ask_info
+  - action: utter_info
+  - user: |
+      Non, je veux rien merci
+    intent: nothing
+    - action: utter_goodbye
+
+
+- story: say goodbye
+  steps:
+  - user: |
+      Aurevoir
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: bot challenge
+  steps:
+  - user: |
+      Tu es un robot ?
+    intent: bot_challenge
+  - action: utter_iamabot
+  - action: utter_can_do_for_you
