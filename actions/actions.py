@@ -10,6 +10,8 @@
 from typing import Any, Text, Dict, List
 
 import requestAPI as api
+import time
+from datetime import datetime
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -24,11 +26,14 @@ class ActionAPI(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        api.getallgroup()
         section = tracker.get_slot('SECTION')
-        field = tracker.get_slot('FIELD')
-        group = tracker.get_slot('GROUP')
-        text = "Si j'ai bien compris vous êtes en "+ field + " " + section + " " + group
+        now = datetime.now()
+        title = api.getScheduleByPromo(section, now)
+
+        if title == "":
+            text = "Vous n'avez pas cours actuellement"
+        else:
+            text = title
         dispatcher.utter_message(text)
 
         return []

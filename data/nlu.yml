@@ -99,7 +99,8 @@ nlu:
     - Que me proposes tu?
 - intent: ask_schedule
   examples: |
-    - Donne moi mon emploi du temps?
+    - bonjour, où ai-je cours?
+    - donne moi mon emploi du temps?
     - emploi du temps
     - mon planning
     - Donne moi mes cours
@@ -115,46 +116,65 @@ nlu:
     - quel est mon emploi du temps?
     - ai-je cours?
     - cours
-    - ai-je cours ?
 - intent: give_section
   examples: |
-    - je suis en [licence 1](SECTION) [informatique] (FIELD)
-    - je suis en [l1](SECTION) [informatique] (FIELD)
-    - je suis en [master 1](SECTION) [informatique] (FIELD)
-    - [l1] (SECTION) [informatique] (FIELD)
-    - [licence 1] (SECTION)
-    - je suis en [master 2](SECTION)
-    - [l1] (SECTION) [classique] (GROUP)
-    - [master 2] (SECTION) [alternant] (GROUP)
-    - [informatique] (FIELD)
-
+    - je suis en [licence 1](SECTION)
+    - [l1] (SECTION)
+    - [deuxieme annee de master] (SECTION) [classique](GROUP)
+    - Je suis en [licence trois](SECTION)
 - intent: give_group
   examples: |
     - je suis dans le groupe des [alternant](GROUP)
-    - je suis en [alternant](GROUP)
-    - groupe [alternant](GROUP)
-    - [alternant](GROUP)
-    - je suis dans le groupe des [classique](GROUP)
     - je suis en [classique](GROUP)
-    - groupe [classique](GROUP)
+    - groupe [alternant](GROUP)
     - [classique](GROUP)
-    - je suis dans le groupe des [classique](GROUP)
-
-- intent: give_field
+- synonym: l1
   examples: |
-    - je suis en [informatique] (FIELD)
-    - [informatique] (FIELD)
-    - mon domaine d'étude est [informique] (FIELD)
-
-#- lookup: SECTION
-#  files: |
-#    - data/db/section.yml
-
+    - l un
+    - licence 1
+    - licence un
+    - licence première année
+    - licence premiere annee
+    - première année de licence
+    - premiere annee de licence
+- synonym: l2
+  examples: |
+    - l deux
+    - licence 2
+    - licence deux
+    - licence deuxième année
+    - deuxième année de licence
+- synonym: l3
+  examples: |
+    - l trois
+    - licence 3
+    - licence trois
+    - licence troisième année
+    - troisième année de licence
+- synonym: m1
+  examples: |
+    - m un
+    - master 1
+    - master un
+    - master première année
+    - première année de master
+- synonym: m2
+  examples: |
+    - m deux
+    - master 2
+    - master deux
+    - master deuxième année
+    - deuxième année de master
 - lookup: SECTION
   examples: |
     - licence 1
     - licence 2
     - licence 3
+    - licence un
+    - licence deux
+    - licence trois
+    - master un
+    - master deux
     - master 1
     - master 2
     - doctorant
@@ -169,7 +189,6 @@ nlu:
     - troisième année de licence
     - première année de master
     - deuxième année de master
-
 - lookup: GROUP
   examples: |
     - alternant
@@ -182,7 +201,3 @@ nlu:
     - e-com
     - ingedoc
     - ingenieur documentaire
-
-- lookup: FIELD
-  examples: |
-    - informatique

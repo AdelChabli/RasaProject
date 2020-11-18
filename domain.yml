@@ -2,9 +2,9 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- give_group
 - ask_schedule
 - give_section
+- give_group
 - greet
 - goodbye
 - affirm
@@ -17,22 +17,20 @@ intents:
 entities:
 - GROUP
 - SECTION
-- FIELD
 slots:
-  SECTION:
-    type: text
-    influence_conversation: true
-  FIELD:
-    type: text
-    influence_conversation: true
   GROUP:
+    type: text
+    influence_conversation: true
+  SECTION:
     type: text
     influence_conversation: true
 responses:
   utter_ask_group:
   - text: Et maintenant j'aurai besoin de savoir ton groupe!
   utter_greet:
-  - text: Bonjour ! comment allez-vous ?
+  - text: Bonjour !
+  - text: Salutation !
+  - text: Bien le bonjour humain !
   utter_goodbye:
   - text: Ce fût un plaisir ! Aurevoir et à bientôt sur les Internet !
   utter_cheer_up:
@@ -53,7 +51,9 @@ responses:
   utter_info:
   - text: Je peux vous afficher un emploi du temps et les salles disponibles au sein du CERI :D
   utter_ask_section:
-  - text: J'ai besoin de savoir dans quelle filière vous êtes et ton année! Par exemple, je suis en licence 1 informatique.
+  - text: J'ai besoin de savoir le nom de ta formation et son année. Exemple je suis en licence 1!
 actions:
 - action_get_schedule
+- utter_ask_section
+- utter_greet
 version: '2.0'
