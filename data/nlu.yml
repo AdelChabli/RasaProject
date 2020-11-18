@@ -118,3 +118,13 @@ nlu:
     - j'aimerai connaitre mon emploi du temps
     - Donne moi mon planning
     - C'est quoi mon planning
+
+- intent: ask_salle
+  examples: |
+    - Donne moi les salles disponibles actuellement
+    - les salles
+    - salle
+    - salles
+    - Salle disponible
+    - les salles disponible s'il te plait
+    - Je peux savoir les salles disponibles

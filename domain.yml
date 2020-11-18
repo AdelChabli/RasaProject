@@ -13,6 +13,7 @@ intents:
 - nothing
 - ask_info
 - ask_schedule
+- ask_salle
 
 actions:
 - utter_greet
@@ -26,6 +27,10 @@ actions:
 - utter_success
 - utter_info
 - utter_schedule
+- action_give_salle
+- utter_salle
+- utter_workingprogress
+
 
 responses:
   utter_greet:
@@ -51,3 +56,7 @@ responses:
     - text: Je peux vous afficher un emploi du temps et les salles disponibles au sein du CERI :D
   utter_schedule:
     - text: Désolé ! Je n'ai toujours pas cette fonctionnalité :'(
+  utter_salle:
+    - text: "{sallesDispo}"
+  utter_workingprogress:
+    - text: Recherche en cours ...

@@ -12,6 +12,34 @@ stories:
   - intent: ask_info
   - action: utter_info
 
+- story: les salles dispo
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_can_do_for_you
+  - intent: ask_salle
+  - action: utter_workingprogress
+  - action: action_give_salle
+  - action: utter_can_do_for_you
+  - intent: nothing
+  - action: utter_goodbye
+
+- story: les salles dispo 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+  - action: utter_can_do_for_you
+  - intent: ask_salle
+  - action: utter_workingprogress
+  - action: action_give_salle
+  - action: utter_can_do_for_you
+  - intent: deny
+  - action: utter_goodbye
+
 
 - story: sad path 1
   steps:
