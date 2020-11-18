@@ -1,8 +1,10 @@
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
-
 intents:
+- give_group
+- ask_schedule
+- give_section
 - greet
 - goodbye
 - affirm
@@ -12,22 +14,23 @@ intents:
 - bot_challenge
 - nothing
 - ask_info
-- ask_schedule
-
-actions:
-- utter_greet
-- utter_goodbye
-- utter_cheer_up
-- utter_did_that_help
-- utter_happy
-- utter_iamabot
-- utter_failed
-- utter_can_do_for_you
-- utter_success
-- utter_info
-- utter_schedule
-
+entities:
+- GROUP
+- SECTION
+- FIELD
+slots:
+  SECTION:
+    type: text
+    influence_conversation: true
+  FIELD:
+    type: text
+    influence_conversation: true
+  GROUP:
+    type: text
+    influence_conversation: true
 responses:
+  utter_ask_group:
+  - text: Et maintenant j'aurai besoin de savoir ton groupe!
   utter_greet:
   - text: Bonjour ! comment allez-vous ?
   utter_goodbye:
@@ -42,12 +45,15 @@ responses:
   utter_iamabot:
   - text: Je suis un robot entrainé par Adel CHABLI et Leo SALADIN
   utter_failed:
-    - text: Ah mince ! J'ai failli à ma tâche !
+  - text: Ah mince ! J'ai failli à ma tâche !
   utter_can_do_for_you:
-    - text: Que puis-je faire pour vous ?
+  - text: Que puis-je faire pour vous ?
   utter_success:
-    - text: Je suis content que mes services aient pu vous aider !
+  - text: Je suis content que mes services aient pu vous aider !
   utter_info:
-    - text: Je peux vous afficher un emploi du temps et les salles disponibles au sein du CERI :D
-  utter_schedule:
-    - text: Désolé ! Je n'ai toujours pas cette fonctionnalité :'(
+  - text: Je peux vous afficher un emploi du temps et les salles disponibles au sein du CERI :D
+  utter_ask_section:
+  - text: J'ai besoin de savoir dans quelle filière vous êtes et ton année! Par exemple, je suis en licence 1 informatique.
+actions:
+- action_get_schedule
+version: '2.0'

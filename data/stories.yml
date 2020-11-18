@@ -57,5 +57,33 @@ stories:
     - intent: mood_great
     - action: utter_happy
     - action: utter_can_do_for_you
-    - intent: ask_schedule
-    - action: utter_schedule
+
+- story: only schedule
+  steps:
+  - intent: ask_schedule
+  - action: utter_ask_section
+  - intent: give_section
+    entities:
+    - SECTION: master 2
+  - slot_was_set:
+    - SECTION: master 2
+  - action: utter_ask_group
+  - intent: give_group
+    entities:
+    - GROUP: alternant
+  - slot_was_set:
+    - GROUP: alternant
+  - action: action_get_schedule
+
+- story: short schedule
+  steps:
+  - intent: ask_schedule
+  - action: utter_ask_section
+  - intent: give_section
+    entities:
+    - SECTION: l1
+    - GROUP: classique
+  - slot_was_set:
+    - SECTION: l1
+    - GROUP: classique
+  - action: action_get_schedule

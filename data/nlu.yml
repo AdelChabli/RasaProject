@@ -1,5 +1,4 @@
 version: "2.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -12,7 +11,6 @@ nlu:
     - coucou
     - wesh
     - yo
-
 - intent: goodbye
   examples: |
     - bonne après midi
@@ -30,7 +28,6 @@ nlu:
     - j'y vais
     - aller a+
     - je me déconnecte
-
 - intent: affirm
   examples: |
     - yes
@@ -45,7 +42,6 @@ nlu:
     - j'accepte
     - ouais
     - confirmer
-
 - intent: deny
   examples: |
     - no
@@ -58,7 +54,6 @@ nlu:
     - j'aime pas
     - je préfère pas
     - pas moyen
-
 - intent: mood_great
   examples: |
     - je vais bien
@@ -71,7 +66,6 @@ nlu:
     - tellement bien
     - je suis de bonne humeur
     - je suis content
-
 - intent: mood_unhappy
   examples: |
     - quelle mauvaise journée
@@ -84,32 +78,28 @@ nlu:
     - je suis pas content
     - je suis fâché
     - je suis déçu
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
 - intent: nothing
   examples: |
     - Rien
     - tu peux rien faire
     - Je ne veux rien
     - Absolument rien
-
 - intent: ask_info
   examples: |
-    - Que peux tu faire pour moi ?
-    - Tu sais faire quoi ?
-    - Tu peux faire quoi ?
+    - Que peux tu faire pour moi?
+    - Tu sais faire quoi?
+    - Tu peux faire quoi?
     - Dit moi ce que tu peux faire
-    - Que me proposes tu ?
-
+    - Que me proposes tu?
 - intent: ask_schedule
   examples: |
-    - Donne moi mon emploi du temps ?
+    - Donne moi mon emploi du temps?
     - emploi du temps
     - mon planning
     - Donne moi mes cours
@@ -118,3 +108,50 @@ nlu:
     - j'aimerai connaitre mon emploi du temps
     - Donne moi mon planning
     - C'est quoi mon planning
+    - est-ce que je pourrai avoir mon emploi du temps?
+    - donne moi mon emploi du temps pour mon groupe.
+    - quel est mon prochain cours?
+    - quel est mon cours?
+    - quel est mon emploi du temps?
+    - ai-je cours?
+    - cours
+    - ai-je cours ?
+- intent: give_section
+  examples: |
+    - je suis en [licence 1](SECTION) [informatique] (FIELD)
+    - je suis en [licence 2](SECTION) [informatique] (FIELD)
+    - je suis en [licence 3](SECTION) [informatique] (FIELD)
+    - je suis en [l1](SECTION) [informatique] (FIELD)
+    - je suis en [l2](SECTION) [informatique] (FIELD)
+    - je suis en [l3](SECTION) [informatique] (FIELD)
+    - je suis en [master 1](SECTION) [informatique] (FIELD)
+    - je suis en [master 2](SECTION) [informatique] (FIELD)
+    - je suis en [doctorat](SECTION) [informatique] (FIELD)
+    - [l1] (SECTION) [informatique] (FIELD)
+    - [l2] (SECTION) [informatique] (FIELD)
+    - [l3] (SECTION) [informatique] (FIELD)
+    - [m1] (SECTION) [informatique] (FIELD)
+    - [m2] (SECTION) [informatique] (FIELD)
+    - [licence 1] (SECTION)
+    - [licence 2] (SECTION)
+    - [licence 3] (SECTION)
+    - [master 1] (SECTION)
+    - [master 2] (SECTION)
+    - [doctorat] (SECTION)
+    - [doctorant] (SECTION)
+    - [master 2](SECTION)
+    - je suis en [master 2](SECTION)
+    - [l1] (SECTION) [classique] (GROUP)
+    - [master 2] (SECTION) [alternant] (GROUP)
+
+- intent: give_group
+  examples: |
+    - je suis dans le groupe des [alternant](GROUP)
+    - je suis en [alternant](GROUP)
+    - groupe [alternant](GROUP)
+    - [alternant](GROUP)
+    - je suis dans le groupe des [classique](GROUP)
+    - je suis en [classique](GROUP)
+    - groupe [classique](GROUP)
+    - [classique](GROUP)
+    - je suis dans le groupe des [classique](GROUP)
