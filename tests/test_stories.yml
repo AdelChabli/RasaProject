@@ -115,7 +115,7 @@ stories:
   - user: |
       Non, je veux rien merci
     intent: nothing
-    - action: utter_goodbye
+  - action: utter_goodbye
 
 
 - story: say goodbye
