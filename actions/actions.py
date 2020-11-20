@@ -10,14 +10,15 @@
 from typing import Any, Text, Dict, List
 
 import requestAPI as api
-import time
+import utilFunction as uti
 from datetime import datetime
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import SlotSet
 
 
-class ActionAPI(Action):
+class ActionGetSchedule(Action):
 
     def name(self) -> Text:
         return "action_get_schedule"
@@ -27,8 +28,39 @@ class ActionAPI(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         section = tracker.get_slot('SECTION')
-        now = datetime.now()
-        title = api.getScheduleByPromo(section, now)
+        spec = tracker.get_slot('SPEC')
+
+        #if api.isMultipleLesson(section, spec):
+        if True:
+            return [SlotSet("isMultipleLesson", True)]
+
+        now = datetime.now().astimezone()
+        title = uti.respForAllLesson(api.getScheduleByPromo(section,spec, now))
+
+        if title == "":
+            text = "Vous n'avez pas cours actuellement"
+        else:
+            text = title
+        dispatcher.utter_message(text)
+
+        return []
+
+
+class ActionGetScheduleWithGroup(Action):
+
+    def name(self) -> Text:
+        return "action_get_schedule_with_group"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        section = tracker.get_slot('SECTION')
+        group = tracker.get_slot('GROUP')
+        spec = tracker.get_slot('SPEC')
+
+        now = datetime.now().astimezone()
+        title = uti.respForAllLesson(api.getScheduleByPromo(section, spec, now))
 
         if title == "":
             text = "Vous n'avez pas cours actuellement"

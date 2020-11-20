@@ -86,8 +86,41 @@ stories:
   - slot_was_set:
     - SECTION: l1
   - action: action_get_schedule
+  - slot_was_set:
+      - isMultipleLesson: false
+  - action: utter_goodbye
 
 - story: short schedule 2
+  steps:
+  - intent: ask_schedule
+  - action: utter_greet
+  - action: utter_ask_section
+  - intent: give_section
+    entities:
+    - SECTION: master 1
+  - slot_was_set:
+    - SECTION: master 1
+  - action: action_get_schedule
+  - slot_was_set:
+      - isMultipleLesson: false
+  - action: utter_goodbye
+
+- story: short schedule 3
+  steps:
+  - intent: ask_schedule
+  - action: utter_greet
+  - action: utter_ask_section
+  - intent: give_section
+    entities:
+    - SECTION: master deux
+  - slot_was_set:
+    - SECTION: master deux
+  - action: action_get_schedule
+  - slot_was_set:
+      - isMultipleLesson: false
+  - action: utter_goodbye
+
+- story: short schedule 4
   steps:
   - intent: ask_schedule
   - action: utter_greet
@@ -98,3 +131,32 @@ stories:
   - slot_was_set:
     - SECTION: licence trois
   - action: action_get_schedule
+  - slot_was_set:
+      - isMultipleLesson: true
+  - action: utter_ask_group
+  - intent: give_group
+  - action: action_get_schedule_with_group
+
+- story: interactive_story_1
+  steps:
+  - intent: ask_schedule
+  - action: utter_greet
+  - action: utter_ask_section
+  - intent: give_section
+    entities:
+    - SECTION: m1
+    - SPEC: ilsen
+  - slot_was_set:
+    - SECTION: m1
+  - slot_was_set:
+    - SPEC: ilsen
+  - action: action_get_schedule
+  - slot_was_set:
+    - isMultipleLesson: true
+  - action: utter_ask_group
+  - intent: give_group
+    entities:
+    - GROUP: classique
+  - slot_was_set:
+    - GROUP: classique
+  - action: action_get_schedule_with_group

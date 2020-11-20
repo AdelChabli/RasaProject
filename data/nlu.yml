@@ -118,15 +118,20 @@ nlu:
     - cours
 - intent: give_section
   examples: |
-    - je suis en [licence 1](SECTION)
-    - [l1] (SECTION)
-    - [deuxieme annee de master] (SECTION) [classique](GROUP)
-    - Je suis en [licence trois](SECTION)
+    - je suis en [licence 1]{"entity": "SECTION", "value": "l1"}
+    - je suis en [master deux]{"entity": "SECTION", "value": "m2"} [ilsen](SPEC)
+    - [deuxieme annee de master]{"entity": "SECTION", "value": "m2"} [ilsen](SPEC)
+    - Je suis en [licence trois]{"entity": "SECTION", "value": "l3"} [il](SPEC)
+    - [l1](SECTION)
+    - [m2](SECTION) [ilsen](SPEC)
+    - [master 1]{"entity": "SECTION", "value": "m1"} [ilsen](SPEC)
 - intent: give_group
   examples: |
     - je suis dans le groupe des [alternant](GROUP)
     - je suis en [classique](GROUP)
     - groupe [alternant](GROUP)
+    - [classique](GROUP) [classique](GROUP)
+    - [classique](GROUP) [classique](GROUP) [classique](GROUP)
     - [classique](GROUP)
 - synonym: l1
   examples: |
@@ -165,6 +170,15 @@ nlu:
     - master deux
     - master deuxième année
     - deuxième année de master
+- synonym: ilsen
+  examples: |
+    - ingénierie du logiciel de la sociéte numérique
+- synonym: ia
+  examples: |
+    - intelligence artificiel
+- synonym: sicom
+  examples: |
+    - systèmes informatiques communicant
 - lookup: SECTION
   examples: |
     - licence 1
@@ -201,3 +215,8 @@ nlu:
     - e-com
     - ingedoc
     - ingenieur documentaire
+- lookup: SPEC
+  examples: |
+    - ilsen
+    - ia
+    - sicom
