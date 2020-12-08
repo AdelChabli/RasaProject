@@ -9,6 +9,9 @@ def getCodeBySection(section, spec):
     request = rq.get(newUrl).json()
     response = ""
 
+    if section or spec is None:
+        return
+
     for row in request['results']:
         if row['letter'] == "INFORMATIQUE":
             for e in row['names']:
