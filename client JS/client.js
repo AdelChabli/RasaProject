@@ -24,7 +24,10 @@ function sendResquest(msg) {
           data += d
         })
         res.on("end", () => {
-          console.log(data)
+          json = JSON.parse(data)
+          for(row in json){
+                console.log(json[row].text)
+          }
         })
       })
       .on("error", console.error)

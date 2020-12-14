@@ -6,6 +6,12 @@ const express = require('express');
 
 const app = express();
 app.use(bodyParser.urlencoded({limit:'50mb',extended: true}))
+app.get('/status', async function(req, res) {
+    data = {
+        "status": "OK"
+    }
+    res.json(data);
+});
 
 app.post('/', async function(req,res) {
 
@@ -16,7 +22,11 @@ app.post('/', async function(req,res) {
 
     let transcription = await main(dataWav);
 
-    res.send(transcription);
+    data = {
+        "text": transcription
+    }
+
+    res.json(data);
 
     res.on('finish', function() {
     		removeFile(filename);
