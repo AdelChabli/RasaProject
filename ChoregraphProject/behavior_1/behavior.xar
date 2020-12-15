@@ -254,7 +254,7 @@ import wave
 class MyClass(GeneratedClass):
     def __init__(self):
         GeneratedClass.__init__(self)
-        self.url = 'http://10.120.29.102:3211/'    #IP : server google
+        self.url = 'http://10.120.29.102:3211/wav'    #IP : server google
 
     def onLoad(self):
         #put initialization code here
