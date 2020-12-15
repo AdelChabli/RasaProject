@@ -3,9 +3,14 @@ const fs = require('fs');
 const bodyParser = require('body-parser');
 const express = require('express');
 
-
 const app = express();
-app.use(bodyParser.urlencoded({limit:'50mb',extended: true}))
+// create application/json parser
+var jsonParser = bodyParser.json()
+app.use(bodyParser.urlencoded({
+    parameterLimit: 10000000,
+    limit: '50mb',
+    extended: true
+}));
 app.get('/status', async function(req, res) {
     data = {
         "status": "ok"
@@ -16,17 +21,23 @@ app.get('/status', async function(req, res) {
     });
 });
 
-app.post('/wav', async function(req,res) {
+app.post("/wav", async function(req,res) {
 
     let filename = "input.wav";
     let dataWav = req.body.wav;
-    let param = req.body.param;
+    let paramWav = req.body.param;
 
-    console.log(param)
+    let buff = new Buffer(paramWav, 'base64');
+    let text = buff.toString('ascii');
+    text = text.replace("(", "")
+    text = text.replace(")", "")
+    let param = text.split(", ")
+
+
 
     if(dataWav != null) console.log("Wav present !");
 
-    let transcription = await main(dataWav);
+    let transcription = await main(dataWav, param);
 
     data = {
         "text": transcription
@@ -47,7 +58,7 @@ app.listen(3211, () => {
     console.log("Recognition service starting on port : 3211");
 });
 
-async function main(dataWav) {
+async function main(dataWav, param) {
 
   // The name of the audio file to transcribe
   const fileName = 'input.wav';
@@ -68,7 +79,7 @@ async function main(dataWav) {
   };
   const config = {
     encoding: 'LINEAR16',
-    sampleRateHertz: 16000,
+    sampleRateHertz: param[2],
     languageCode: 'fr-FR',
     alternativeLanguageCodes : ['fr-FR', 'en-US']
   };
