@@ -27,15 +27,16 @@ class MyClass(GeneratedClass):
 import json
 import random
 import time
+import json
 
 
 class MyClass(GeneratedClass):
     def __init__(self):
         GeneratedClass.__init__(self)
-        self.url_rasa = 'http://169.254.110.253:8082/'  # IP : serveur rasa
-        self.url_stt = 'http://169.254.110.253:8082/'  # IP : serveur speech to text
+        self.url_rasa = 'http://10.120.29.102:5005'  # IP : serveur rasa
+        self.url_stt = 'http://10.120.29.102:3211'  # IP : serveur speech to text
         self.on_starting = True
-        self.text = None
+        self.text = ""
         self.user = "user"
 
     def onInput_onResponseAPI(self, text=None):
@@ -58,7 +59,6 @@ class MyClass(GeneratedClass):
         pass
 
     def onInput_onStart(self):
-
         rasa, stt = self.check_servers()
         if not rasa or not stt:
             self.onBye(self.text)
@@ -68,32 +68,34 @@ class MyClass(GeneratedClass):
         if self.on_starting:
             self.user += str(random.randint(1000, 9999))
             self.on_starting = False
-            self.onGotResponse(self.text, self.on_starting)
+            self.onGotResponse(self.text)
 
     def onInput_onStop(self):
         self.onUnload()  # it is recommended to reuse the clean-up as the box is stopped
         self.onStopped()  # activate the output of the box
 
     def check_servers(self):
-
-        url_rasa = self.url_rasa + '/webhooks/rest'
+        url_rasa = self.url_rasa + "/webhooks/rest"
         url_stt = self.url_stt + '/status'
-
+        print(url_rasa)
         req_rasa = urllib2.Request(url_rasa, data=None)
         f_rasa = urllib2.urlopen(req_rasa)
         res_rasa = f_rasa.read()
+        json_rasa = json.loads(res_rasa)
 
         req_stt = urllib2.Request(url_stt, data=None)
         f_stt = urllib2.urlopen(req_stt)
         res_stt = f_stt.read()
+        json_stt = json.loads(res_stt)
 
         online_rasa, online_stt = False, False
-        if res_rasa['status'] == 'OK':
+        print "Get all data: ", res_rasa
+        if json_rasa["status"] == "ok":
             online_rasa = True
             self.text += "Server RASA available ! "
         else:
             self.text += "Server RASA unreachable ! "
-        if res_stt['status'] == 'OK':
+        if json_stt['status'] == "ok":
             online_stt = True
             self.text += "Server GOOGLE available ! "
         else:
@@ -252,7 +254,7 @@ import wave
 class MyClass(GeneratedClass):
     def __init__(self):
         GeneratedClass.__init__(self)
-        self.url = 'http://169.254.110.253:8082/google?'    #IP : server google
+        self.url = 'http://10.120.29.102:3211/'    #IP : server google
 
     def onLoad(self):
         #put initialization code here
@@ -291,12 +293,12 @@ class MyClass(GeneratedClass):
         self.onUnload() #it is recommended to reuse the clean-up as the box is stopped
         self.onStopped() #activate the output of the box
 
-    def send_resquest(self, url, session, speech_data, params):
+    def send_resquest(self, speech_data, params):
         data = {
-            wav: speech_data,
-            param: params
+            "wav": speech_data,
+            "param": params
         }
-        req = urllib2.Request(url, data=data)
+        req = urllib2.Request(self.url, data=data)
         f = urllib2.urlopen(req)
 
         response = f.read()
@@ -341,4 +343,4 @@ class MyClass(GeneratedClass):
                 self.bIsRunning = False
 
     def onInput_onStop(self):
-        self.onUnload()]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when Diagram is loaded." id="1" /><Input name="onStart" type="3" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this Input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this Input." id="3" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when Box behavior is finished." id="4" /><Parameter name="Voice shaping (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="50" max="150" tooltip='Used to modify at runtime the voice feature (tone, speed). In a slighty&#x0A;different way than pitch and speed, it gives a kind of &quot;gender or age&#x0A;modification&quot; effect.&#x0A;&#x0A;For instance, a quite good male derivation of female voice can be&#x0A;obtained setting this parameter to 78%.&#x0A;&#x0A;Note: For a better effect, you can compensate this parameter with the&#x0A;speed parameter. For example, if you want to decrease by 20% the voice&#x0A;shaping, you will have to increase by 20% the speed to keep a constant&#x0A;average speed.' id="5" /><Parameter name="Speed (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="50" max="200" tooltip="Changes the speed of the voice.&#x0A;&#x0A;Note: For a better effect, you can compensate this parameter with the voice&#x0A;shaping parameter. For example, if you want to increase by 20% the speed, you&#x0A;will have to decrease by 20% the voice shaping to keep a constant average&#x0A;speed." id="6" /></Box><Link inputowner="3" indexofinput="2" outputowner="1" indexofoutput="5" /><Link inputowner="3" indexofinput="4" outputowner="1" indexofoutput="6" /><Link inputowner="6" indexofinput="2" outputowner="3" indexofoutput="6" /><Link inputowner="7" indexofinput="4" outputowner="8" indexofoutput="4" /><Link inputowner="8" indexofinput="2" outputowner="6" indexofoutput="4" /><Link inputowner="1" indexofinput="4" outputowner="7" indexofoutput="6" /><Link inputowner="3" indexofinput="4" outputowner="7" indexofoutput="6" /><Link inputowner="1" indexofinput="2" outputowner="7" indexofoutput="7" /><Link inputowner="3" indexofinput="2" outputowner="7" indexofoutput="5" /><Link inputowner="2" indexofinput="2" outputowner="3" indexofoutput="8" /><Link inputowner="0" indexofinput="4" outputowner="2" indexofoutput="4" /><Link inputowner="3" indexofinput="2" outputowner="0" indexofoutput="2" /><Link inputowner="0" indexofinput="4" outputowner="3" indexofoutput="5" /></Diagram></BehaviorKeyframe></BehaviorLayer></Timeline></Box></ChoregrapheProject>
+        self.onUnload()]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when Diagram is loaded." id="1" /><Input name="onStart" type="3" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this Input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this Input." id="3" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when Box behavior is finished." id="4" /><Parameter name="Voice shaping (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="50" max="150" tooltip='Used to modify at runtime the voice feature (tone, speed). In a slighty&#x0A;different way than pitch and speed, it gives a kind of &quot;gender or age&#x0A;modification&quot; effect.&#x0A;&#x0A;For instance, a quite good male derivation of female voice can be&#x0A;obtained setting this parameter to 78%.&#x0A;&#x0A;Note: For a better effect, you can compensate this parameter with the&#x0A;speed parameter. For example, if you want to decrease by 20% the voice&#x0A;shaping, you will have to increase by 20% the speed to keep a constant&#x0A;average speed.' id="5" /><Parameter name="Speed (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="50" max="200" tooltip="Changes the speed of the voice.&#x0A;&#x0A;Note: For a better effect, you can compensate this parameter with the voice&#x0A;shaping parameter. For example, if you want to increase by 20% the speed, you&#x0A;will have to decrease by 20% the voice shaping to keep a constant average&#x0A;speed." id="6" /></Box><Link inputowner="3" indexofinput="2" outputowner="1" indexofoutput="5" /><Link inputowner="3" indexofinput="4" outputowner="1" indexofoutput="6" /><Link inputowner="6" indexofinput="2" outputowner="3" indexofoutput="6" /><Link inputowner="7" indexofinput="4" outputowner="8" indexofoutput="4" /><Link inputowner="8" indexofinput="2" outputowner="6" indexofoutput="4" /><Link inputowner="1" indexofinput="4" outputowner="7" indexofoutput="6" /><Link inputowner="3" indexofinput="4" outputowner="7" indexofoutput="6" /><Link inputowner="1" indexofinput="2" outputowner="7" indexofoutput="7" /><Link inputowner="3" indexofinput="2" outputowner="7" indexofoutput="5" /><Link inputowner="0" indexofinput="4" outputowner="2" indexofoutput="4" /><Link inputowner="0" indexofinput="4" outputowner="3" indexofoutput="5" /><Link inputowner="3" indexofinput="2" outputowner="0" indexofoutput="2" /><Link inputowner="2" indexofinput="2" outputowner="3" indexofoutput="8" /></Diagram></BehaviorKeyframe></BehaviorLayer></Timeline></Box></ChoregrapheProject>

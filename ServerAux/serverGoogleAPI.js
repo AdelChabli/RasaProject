@@ -8,15 +8,21 @@ const app = express();
 app.use(bodyParser.urlencoded({limit:'50mb',extended: true}))
 app.get('/status', async function(req, res) {
     data = {
-        "status": "OK"
+        "status": "ok"
     }
     res.json(data);
+    res.on('finish', function() {
+    		console.log("Ping reussi")
+    });
 });
 
-app.post('/', async function(req,res) {
+app.post('/wav', async function(req,res) {
 
     let filename = "input.wav";
     let dataWav = req.body.wav;
+    let param = req.body.param;
+
+    console.log(param)
 
     if(dataWav != null) console.log("Wav present !");
 
@@ -84,9 +90,10 @@ async function main(dataWav) {
 /** Permet de sauvegarder les wav venant du client **/
 function saveFile(buffer, nameFile) {
   return new Promise(resolve => {
+    if(buffer == null) return
     let dataWav = buffer.replace('data:audio/wav; codecs=opus;base64,', '');
       fs.writeFile(nameFile, dataWav, {encoding: 'base64'}, async function(err) {
-          //console.log('File created');
+          console.log('File created');
       resolve(true);
       });
   });
