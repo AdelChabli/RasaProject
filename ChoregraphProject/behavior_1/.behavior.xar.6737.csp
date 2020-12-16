@@ -304,7 +304,7 @@ class MyClass(GeneratedClass):
                 self.onNothing("Vide")
                 #self.onStopped()
             else:
-                self.wordRecognized(str(sentence))
+                self.wordRecognized(sentence) ## Error ICI !!!!
                 #self.onStopped()
 
     def onInput_onStop(self):

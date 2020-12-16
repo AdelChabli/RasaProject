@@ -46,4 +46,3 @@ def send_request(speech_data, params):
 
 d, p = encode_wav("test.wav")
 print(send_request(d,p))
-

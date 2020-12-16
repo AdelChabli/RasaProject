@@ -33,7 +33,7 @@ app.post("/wav", async function(req,res) {
     text = text.replace(")", "")
     let param = text.split(", ")
 
-
+    console.log(param)
 
     if(dataWav != null) console.log("Wav present !");
 
