@@ -4,7 +4,10 @@ session_config:
 intents:
 - give_section
 - give_group
-- ask_schedule
+- give_intent
+- give_requirement
+- intent_schedule
+- intent_room
 - greet
 - goodbye
 - affirm
@@ -57,13 +60,16 @@ responses:
   utter_success:
   - text: Je suis content que mes services aient pu vous aider !
   utter_info:
-  - text: Je peux vous afficher un emploi du temps et les salles disponibles au sein du CERI :D
+  - text: Je peux vous afficher un emploi du temps et les salles disponibles au sein
+      du CERI :D
+  utter_ask_intent:
+  - text: Je suis à votre disposition, il m'est possible de vous renseigner sur vos cours, la disponibilité d'un salle, si vous êtes perdu je peux peu être vous aider et si vous cherchez un prof dit moi.
   utter_ask_section:
-  - text: J'ai besoin de savoir le nom de ta formation et son année. Exemple je suis en licence 1!
+  - text: J'ai besoin de savoir le nom de ta formation et son année. Exemple je suis
+      en licence 1!
 actions:
 - action_get_schedule
 - action_get_schedule_with_group
-- utter_ask_group
-- utter_ask_section
-- utter_greet
-version: '2.0'
+- action_give_room
+- intent_room
+- intent_schedule

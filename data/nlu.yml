@@ -13,21 +13,14 @@ nlu:
     - yo
 - intent: goodbye
   examples: |
-    - bonne après midi
-    - bonne fin de soirée
     - bonne journée
     - cya
     - a+
     - aurevoir
     - à bientôt
-    - je m'envais
     - bye
     - bye bye
-    - bonne nuit
-    - on se voit plus tard
-    - j'y vais
-    - aller a+
-    - je me déconnecte
+    - a la prochaine
 - intent: affirm
   examples: |
     - yes
@@ -48,12 +41,8 @@ nlu:
     - non
     - jamais
     - pas du tout
-    - bah non
     - je pense pas
-    - ça arrivera pas
-    - j'aime pas
-    - je préfère pas
-    - pas moyen
+    - je ne préfère pas
 - intent: mood_great
   examples: |
     - je vais bien
@@ -80,42 +69,39 @@ nlu:
     - je suis déçu
 - intent: bot_challenge
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+    - es tu un bot?
+    - es tu un humain?
+    - je parle a un bot?
+    - je parle a un human?
 - intent: nothing
   examples: |
-    - Rien
-    - tu peux rien faire
-    - Je ne veux rien
-    - Absolument rien
+    - rien
+    - je ne peux rien faire
+    - je ne veux rien
+    - absolument rien
 - intent: ask_info
   examples: |
-    - Que peux tu faire pour moi?
-    - Tu sais faire quoi?
-    - Tu peux faire quoi?
-    - Dit moi ce que tu peux faire
-    - Que me proposes tu?
-- intent: ask_schedule
+    - que peux tu faire pour moi?
+    - tu sais faire quoi?
+    - tu peux faire quoi?
+    - dit moi ce que tu peux faire
+    - que me proposes tu?
+- intent: intent_schedule
   examples: |
     - bonjour, où ai-je cours?
     - donne moi mon emploi du temps?
     - emploi du temps
     - mon planning
-    - Donne moi mes cours
-    - Affiche moi mon emploi du temps
-    - affiche moi mes cours
+    - donne moi mes cours
     - j'aimerai connaitre mon emploi du temps
-    - Donne moi mon planning
-    - C'est quoi mon planning
+    - donne moi mon planning
+    - c'est quoi mon planning
     - est-ce que je pourrai avoir mon emploi du temps?
     - donne moi mon emploi du temps pour mon groupe.
     - quel est mon prochain cours?
     - quel est mon cours?
     - quel est mon emploi du temps?
     - ai-je cours?
-    - cours
 - intent: give_section
   examples: |
     - je suis en [licence 1]{"entity": "SECTION", "value": "l1"}
@@ -220,3 +206,11 @@ nlu:
     - ilsen
     - ia
     - sicom
+- intent: intent_room
+  examples: |
+    - je cherche un salle libre
+    - quelles sont les salles libres
+    - j'aurai besoin d'un salle libre
+    - un endroit pour travailler
+    - une salle de travailler
+    - j'aurai besoin de savoir ou je peux travailler

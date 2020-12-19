@@ -1,48 +1,43 @@
-import urllib2
-import urllib
-import json
-import base64
-import wave
+class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self, False)
+        try:
+            self.ad = None
+            # self.ad = ALProxy("ALAudioDevice")
+        except Exception as e:
+            self.ad = None
+            self.logger.error(e)
+        self.filepath = ""
 
+    def onLoad(self):
+        self.bIsRecording = False
+        self.bIsRunning = False
 
-def encode_wav(path):
-    file = wave.open(path, 'rb')
-    params = base64.b64encode(str(file.getparams()))
-    print(params)
-    data = base64.b64encode(file.readframes(file.getnframes()))
+    def onUnload(self):
+        self.bIsRunning = False
+        if( self.bIsRecording ):
+            self.ad.stopMicrophonesRecording()
+            self.bIsRecording = False
 
-    return data, params
+    def onInput_onStart(self, p):
+        if(self.bIsRunning):
+            return
+        self.bIsRunning = True
+        sExtension = self.toExtension( self.getParameter("Microphones used") )
+        self.filepath = p + sExtension
+        if self.ad:
+            self.ad.startMicrophonesRecording( self.filepath )
+            self.bIsRecording = True
+        else:
+            self.logger.warning("No sound recorded")
 
+    def onInput_onStop(self):
+        if( self.bIsRunning ):
+            self.onUnload()
+            self.onStopped(self.filepath)
 
-def send_request(speech_data, params):
-    url = "http://172.17.0.1:3211/wav"
-    json_data = {
-        "wav": speech_data,
-        "param": params,
-    }
-
-    method = "POST"
-    handler = urllib2.HTTPHandler()
-    opener = urllib2.build_opener(handler)
-    data = urllib.urlencode(json_data)
-    request = urllib2.Request(url, data=data)
-
-    request.get_method = lambda: method
-    try:
-        connection = opener.open(request)
-    except urllib2.HTTPError, e:
-        connection = e
-
-    # check. Substitute with appropriate HTTP code.
-    if connection.code == 200:
-        response = connection.read()
-    else:
-        pass
-    # handle the error case. connection.read() will still contain data
-    # if any was returned, but it probably won't be of any use
-
-    return response
-
-
-d, p = encode_wav("test.wav")
-print(send_request(d,p))
+    def toExtension(self, sMicrophones):
+        if( sMicrophones == "Front head microphone only (.ogg)"):
+            return ".ogg"
+        else:
+            return ".wav"

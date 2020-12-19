@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<package version="0.0.0" uuid="naopydial-dd3cc6">
+<package uuid="naorasa" version="0.0.0">
  <names>
-  <name lang="en_US">NaoPydial</name>
+  <name lang="en_US">NaoRASA</name>
  </names>
  <supportedLanguages>
   <language>en_US</language>

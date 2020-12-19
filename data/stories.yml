@@ -6,79 +6,19 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
+  - action: utter_ask_intent
   - intent: mood_great
   - action: utter_happy
   - action: utter_can_do_for_you
   - intent: ask_info
   - action: utter_info
 
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-  - action: utter_can_do_for_you
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_failed
-  - action: utter_can_do_for_you
-  - intent: nothing
-  - action: utter_goodbye
-
-- story: sad path 3
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_success
-  - action: utter_can_do_for_you
-  - intent: ask_info
-  - action: utter_info
-
-- story: happy path 2
-  steps:
-    - intent: greet
-    - action: utter_greet
-    - intent: mood_great
-    - action: utter_happy
-    - action: utter_can_do_for_you
-
-#- story: only schedule
-#  steps:
-#  - intent: ask_schedule
-#  - action: utter_ask_section
-#  - intent: give_section
-#    entities:
-#    - SECTION: master 2
-#  - slot_was_set:
-#    - SECTION: master 2
-#  - action: utter_ask_group
-#  - intent: give_group
-#    entities:
-#    - GROUP: alternant
-#  - slot_was_set:
-#    - GROUP: alternant
-#  - action: action_get_schedule
-
 - story: short schedule
   steps:
-  - intent: ask_schedule
+  - intent: greet
   - action: utter_greet
+  - action: utter_ask_intent
+  - intent: intent_schedule
   - action: utter_ask_section
   - intent: give_section
     entities:
@@ -92,8 +32,10 @@ stories:
 
 - story: short schedule 2
   steps:
-  - intent: ask_schedule
+  - intent: greet
   - action: utter_greet
+  - action: utter_ask_intent
+  - intent: intent_schedule
   - action: utter_ask_section
   - intent: give_section
     entities:
@@ -103,11 +45,13 @@ stories:
   - action: action_get_schedule
   - slot_was_set:
       - isMultipleLesson: false
-  - action: utter_goodbye
 
 - story: short schedule 3
   steps:
-  - intent: ask_schedule
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_intent
+  - intent: intent_schedule
   - action: utter_greet
   - action: utter_ask_section
   - intent: give_section
@@ -118,11 +62,13 @@ stories:
   - action: action_get_schedule
   - slot_was_set:
       - isMultipleLesson: false
-  - action: utter_goodbye
 
 - story: short schedule 4
   steps:
-  - intent: ask_schedule
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_intent
+  - intent: intent_schedule
   - action: utter_greet
   - action: utter_ask_section
   - intent: give_section
@@ -137,9 +83,12 @@ stories:
   - intent: give_group
   - action: action_get_schedule_with_group
 
-- story: interactive_story_1
+- story: short schedule 5
   steps:
-  - intent: ask_schedule
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_intent
+  - intent: intent_schedule
   - action: utter_greet
   - action: utter_ask_section
   - intent: give_section
@@ -160,3 +109,12 @@ stories:
   - slot_was_set:
     - GROUP: classique
   - action: action_get_schedule_with_group
+
+- story: ask for free room
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_intent
+  - intent: give_intent
+  - action: intent_room
+  - action: action_give_room
