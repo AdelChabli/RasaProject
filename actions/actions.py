@@ -80,7 +80,9 @@ class ActionGiveRoom(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        # TODO
+        duration = tracker.get_slot('DURATION')
+        hour_start = tracker.get_slot('START')
+        date = datetime.now().astimezone()
         title = ""
         if title == "":
             text = "Vous n'avez pas cours actuellement"

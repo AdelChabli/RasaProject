@@ -22,6 +22,15 @@ entities:
 - SECTION
 - SPEC
 slots:
+  DURATION:
+    type: text
+    influence_conversation: true
+  START:
+    type: text
+      influence_conversation: true
+  END:
+    type: text
+      influence_conversation: true
   GROUP:
     type: text
     influence_conversation: true

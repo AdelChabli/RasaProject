@@ -214,3 +214,9 @@ nlu:
     - un endroit pour travailler
     - une salle de travailler
     - j'aurai besoin de savoir ou je peux travailler
+
+- intent: intent_room_requirement
+  examples: |
+    - pendant [3 heure](DURATION) de [11 heure 30](START) à [14 heure 30](END)
+    - je veux une salle de [16h](START) à [17h30](END) pendant [1h30](DURATION)
+    - si possible de [8 heures 30](START) à [13 heures](END) pendant [4 heures 30](DURATION)
