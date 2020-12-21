@@ -5,9 +5,11 @@ const express = require('express');
 
 const app = express();
 // create application/json parser
-var jsonParser = bodyParser.json()
+var jsonParser = bodyParser.json({
+    limit: '50mb',
+    extended: true
+})
 app.use(bodyParser.urlencoded({
-    parameterLimit: 10000000,
     limit: '50mb',
     extended: true
 }));
@@ -21,11 +23,12 @@ app.get('/status', async function(req, res) {
     });
 });
 
-app.post("/wav", async function(req,res) {
+app.post("/api", jsonParser, async function(req,res) {
 
     let filename = "input.wav";
     let dataWav = req.body.wav;
     let paramWav = req.body.param;
+
 
     let buff = new Buffer(paramWav, 'base64');
     let text = buff.toString('ascii');
@@ -43,7 +46,7 @@ app.post("/wav", async function(req,res) {
         "text": transcription
     }
 
-    res.json(data);
+    res.send(data);
 
     res.on('finish', function() {
     		removeFile(filename);
