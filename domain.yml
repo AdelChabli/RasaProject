@@ -21,6 +21,7 @@ intents:
 - intent_direction
 - intent_get_direction
 - intent_room_requirement
+- intent_ask_function
 entities:
 - GROUP
 - SECTION
@@ -28,6 +29,7 @@ entities:
 - DURATION
 - START
 - END
+- ROOM
 slots:
   DURATION:
     type: text
@@ -74,18 +76,19 @@ responses:
   - text: Je suis un robot entrainé par Adel CHABLI et Leo SALADIN
   utter_failed:
   - text: Ah mince ! J'ai failli à ma tâche !
-  utter_can_do_for_you:
-  - text: Que puis-je faire pour vous ?
   utter_success:
   - text: Je suis content que mes services aient pu vous aider !
-  utter_info:
-  - text: Je peux vous afficher un emploi du temps et les salles disponibles au sein
-      du CERI :D
-  utter_ask_intent:
-  - text: Je peux vous orienter si vous cherchez une salle en particulier. Je peux vous fournir les salles disponibles dans créneaux voulu. Je peux vous renseigner sur vos cours à venir. Et pour finir, je peux transmettre un message à un enseignant si vous le desirez.
+  utter_get_intent:
+  - text: Je peux vous orienter si vous cherchez une salle en particulier. Je peux
+      vous fournir les salles disponibles dans créneaux voulu. Je peux vous renseigner
+      sur vos cours à venir. Et pour finir, je peux transmettre un message à un enseignant
+      si vous le desirez.
   utter_ask_section:
   - text: J'ai besoin de savoir le nom de ta formation et son année. Exemple je suis
       en licence 1!
+  utter_ask_direction:
+  - text: Je vous écoute, qu'elle est la salle que vous cherchez ?
+  - text: Quelle salle ?
 actions:
 - action_get_schedule
 - action_get_schedule_with_group

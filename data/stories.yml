@@ -2,22 +2,19 @@ version: "2.0"
 
 stories:
 
-- story: happy path
+- story: info path
   steps:
   - intent: greet
   - action: utter_greet
-  - action: utter_ask_intent
-  - intent: mood_great
-  - action: utter_happy
-  - action: utter_can_do_for_you
-  - intent: ask_info
-  - action: utter_info
+  - action: utter_available
+  - intent: intent_ask_function
+  - action: utter_get_intent
 
 - story: short schedule
   steps:
   - intent: greet
   - action: utter_greet
-  - action: utter_ask_intent
+  - action: utter_available
   - intent: intent_schedule
   - action: utter_ask_section
   - intent: give_section
@@ -34,7 +31,7 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - action: utter_ask_intent
+  - action: utter_available
   - intent: intent_schedule
   - action: utter_ask_section
   - intent: give_section
@@ -50,7 +47,7 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - action: utter_ask_intent
+  - action: utter_available
   - intent: intent_schedule
   - action: utter_greet
   - action: utter_ask_section
@@ -67,7 +64,7 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - action: utter_ask_intent
+  - action: utter_available
   - intent: intent_schedule
   - action: utter_greet
   - action: utter_ask_section
@@ -87,7 +84,7 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - action: utter_ask_intent
+  - action: utter_available
   - intent: intent_schedule
   - action: utter_greet
   - action: utter_ask_section
@@ -114,7 +111,7 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - action: utter_ask_intent
+  - action: utter_available
   - intent: give_intent
   - action: intent_room
   - action: action_give_room

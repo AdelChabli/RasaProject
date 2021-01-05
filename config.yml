@@ -1,9 +1,11 @@
 # Configuration for Rasa NLU.
 # https://rasa.com/docs/rasa/nlu/components/
-language: fr
+language: "fr"
 
 pipeline:
-  - name: WhitespaceTokenizer
+  - name: SpacyNLP
+  - name: SpacyTokenizer
+  - name: SpacyFeaturizer
   - name: RegexFeaturizer
   - name: LexicalSyntacticFeaturizer
   - name: CountVectorsFeaturizer

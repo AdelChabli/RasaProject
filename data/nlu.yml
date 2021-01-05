@@ -262,3 +262,12 @@ nlu:
     - je cherche un amphi
     - j'aimerai savoir ou est un amphitheatre
     - je cherche mon chemin
+    - je cherche la salle [stat 1](ROOM)
+    - je cherche l'amphitheatre [blaise](ROOM)
+
+- intent: intent_ask_function
+  examples: |
+    - quelles sont tes fonctionnalités?
+    - quelles sont tes services?
+    - quelles services rends tu?
+    - que fais tu ?
