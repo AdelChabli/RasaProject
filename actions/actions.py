@@ -12,6 +12,7 @@ from typing import Any, Text, Dict, List
 import requestAPI as api
 import utilFunction as uti
 from datetime import datetime
+from db_sqlite import select_data
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -86,6 +87,26 @@ class ActionGiveRoom(Action):
         title = ""
         if title == "":
             text = "Vous n'avez pas cours actuellement"
+        else:
+            text = title
+        dispatcher.utter_message(text)
+
+        return []
+
+
+class ActionGetDirection(Action):
+
+    def name(self) -> Text:
+        return "action_get_direction"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        room = tracker.get_slot('ROOM')
+        title = select_data(room)
+        if title == "":
+            text = "Je ne connais pas cette salle."
         else:
             text = title
         dispatcher.utter_message(text)

@@ -17,6 +17,10 @@ intents:
 - bot_challenge
 - nothing
 - ask_info
+- ask_schedule
+- intent_direction
+- intent_get_direction
+- intent_room_requirement
 entities:
 - GROUP
 - SECTION
@@ -26,9 +30,6 @@ entities:
 - END
 slots:
   DURATION:
-    type: text
-    influence_conversation: true
-  START:
     type: text
     influence_conversation: true
   END:
@@ -43,6 +44,9 @@ slots:
   SPEC:
     type: text
     influence_conversation: true
+  START:
+    type: text
+    influence_conversation: true
   isMultipleLesson:
     type: bool
     auto_fill: false
@@ -51,9 +55,12 @@ responses:
   utter_ask_group:
   - text: Et maintenant j'aurai besoin de savoir ton groupe!
   utter_greet:
-  - text: Bonjour !
-  - text: Salutation !
-  - text: Bien le bonjour humain !
+  - text: Bonjour!
+  - text: Salutation!
+  - text: Bien le bonjour humain!
+  utter_available:
+  - text: Je suis à votre disposition.
+  - text: Que puis-je faire pour vous?
   utter_goodbye:
   - text: Ce fût un plaisir ! Aurevoir et à bientôt sur les Internet !
   utter_cheer_up:
@@ -75,7 +82,7 @@ responses:
   - text: Je peux vous afficher un emploi du temps et les salles disponibles au sein
       du CERI :D
   utter_ask_intent:
-  - text: Je suis à votre disposition, il m'est possible de vous renseigner sur vos cours, la disponibilité d'un salle, si vous êtes perdu je peux peu être vous aider et si vous cherchez un prof dit moi.
+  - text: Je peux vous orienter si vous cherchez une salle en particulier. Je peux vous fournir les salles disponibles dans créneaux voulu. Je peux vous renseigner sur vos cours à venir. Et pour finir, je peux transmettre un message à un enseignant si vous le desirez.
   utter_ask_section:
   - text: J'ai besoin de savoir le nom de ta formation et son année. Exemple je suis
       en licence 1!
@@ -83,5 +90,6 @@ actions:
 - action_get_schedule
 - action_get_schedule_with_group
 - action_give_room
+- action_get_direction
 - intent_room
 - intent_schedule

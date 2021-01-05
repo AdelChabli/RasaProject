@@ -220,3 +220,45 @@ nlu:
     - pendant [3 heure](DURATION) de [11 heure 30](START) à [14 heure 30](END)
     - je veux une salle de [16h](START) à [17h30](END) pendant [1h30](DURATION)
     - si possible de [8 heures 30](START) à [13 heures](END) pendant [4 heures 30](DURATION)
+
+- lookup: ROOM
+  examples: |
+    - ada
+    - blaise
+    - cisco
+    - electronique
+    - reseaux
+    - robotique
+    - s1
+    - s2
+    - s2 bis
+    - s3
+    - s4
+    - s5
+    - s6
+    - s7
+    - s8
+    - stat 1
+    - stat 2
+    - stat 3
+    - stat 4
+    - stat 5
+    - stat 6
+    - stat 7
+    - stat 8
+    - stat9
+
+- intent: intent_get_direction
+  examples: |
+    - où est la salle [s1] (ROOM)
+    - je cherche l'amphitheatre [ada] (ROOM)
+    - pourrais-tu me dire ou est la salle [blaise] (ROOM)
+    - dit moi ou est situé la salle [stat 1] (ROOM)
+
+- intent: intent_direction
+  examples: |
+    - j'aimerai savoir ou est une salle
+    - je cherche une salle
+    - je cherche un amphi
+    - j'aimerai savoir ou est un amphitheatre
+    - je cherche mon chemin
