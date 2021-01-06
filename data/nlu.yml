@@ -11,6 +11,8 @@ nlu:
     - coucou
     - wesh
     - yo
+    - Bien le bonjour
+    - Bonjour
 - intent: goodbye
   examples: |
     - bonne journée
@@ -43,6 +45,9 @@ nlu:
     - pas du tout
     - je pense pas
     - je ne préfère pas
+    - Non c'est bon, merci
+    - Non, c'est bon
+    - Non
 - intent: mood_great
   examples: |
     - je vais bien
@@ -102,6 +107,7 @@ nlu:
     - quel est mon cours?
     - quel est mon emploi du temps?
     - ai-je cours?
+    - Quelles sont mes cours ?
 - intent: give_section
   examples: |
     - je suis en [licence 1]{"entity": "SECTION", "value": "l1"}
@@ -111,6 +117,7 @@ nlu:
     - [l1](SECTION)
     - [m2](SECTION) [ilsen](SPEC)
     - [master 1]{"entity": "SECTION", "value": "m1"} [ilsen](SPEC)
+    - Je suis en [master 2]{"entity": "SECTION", "value": "m2"} [ilsen](SPEC)
 - intent: give_group
   examples: |
     - je suis dans le groupe des [alternant](GROUP)
@@ -119,15 +126,74 @@ nlu:
     - [classique](GROUP) [classique](GROUP)
     - [classique](GROUP) [classique](GROUP) [classique](GROUP)
     - [classique](GROUP)
+- intent: intent_room
+  examples: |
+    - je cherche un salle libre
+    - quelles sont les salles libres
+    - j'aurai besoin d'un salle libre
+    - un endroit pour travailler
+    - une salle de travailler
+    - j'aurai besoin de savoir ou je peux travailler
+- intent: intent_room_requirement
+  examples: |
+    - pendant [3 heure](DURATION) de [11 heure 30](START) à [14 heure 30](END)
+    - je veux une salle de [16h](START) à [17h30](END) pendant [1h30](DURATION)
+    - si possible de [8 heures 30](START) à [13 heures](END) pendant [4 heures 30](DURATION)
+- intent: intent_get_direction
+  examples: |
+    - où est la salle [s1] (ROOM)
+    - je cherche l'amphitheatre [ada] (ROOM)
+    - pourrais-tu me dire ou est la salle [blaise] (ROOM)
+    - dit moi ou est situé la salle [stat 1] (ROOM)
+    - Ou est l'amphi [Ada](ROOM) ?
+    - je cherche la salle [stat 1](ROOM)
+    - je cherche l'amphitheatre [blaise](ROOM)
+    - Je cherche l'amphi [ada](ROOM)
+    - Je cherche l'amphi [blaise](ROOM)
+- intent: intent_direction
+  examples: |
+    - j'aimerai savoir ou est une salle
+    - je cherche une salle
+    - je cherche un amphi
+    - j'aimerai savoir ou est un amphitheatre
+    - je cherche mon chemin
+- intent: intent_ask_function
+  examples: |
+    - quelles sont tes fonctionnalités?
+    - quelles sont tes services?
+    - quelles services rends tu?
+    - que fais tu ?
 - synonym: l1
   examples: |
-    - l un
     - licence 1
+    - l un
     - licence un
     - licence première année
     - licence premiere annee
     - première année de licence
     - premiere annee de licence
+- synonym: m2
+  examples: |
+    - master deux
+    - deuxieme annee de master
+    - m deux
+    - master 2
+    - master deuxième année
+    - deuxième année de master
+- synonym: l3
+  examples: |
+    - licence trois
+    - l trois
+    - licence 3
+    - licence troisième année
+    - troisième année de licence
+- synonym: m1
+  examples: |
+    - master 1
+    - m un
+    - master un
+    - master première année
+    - première année de master
 - synonym: l2
   examples: |
     - l deux
@@ -135,27 +201,6 @@ nlu:
     - licence deux
     - licence deuxième année
     - deuxième année de licence
-- synonym: l3
-  examples: |
-    - l trois
-    - licence 3
-    - licence trois
-    - licence troisième année
-    - troisième année de licence
-- synonym: m1
-  examples: |
-    - m un
-    - master 1
-    - master un
-    - master première année
-    - première année de master
-- synonym: m2
-  examples: |
-    - m deux
-    - master 2
-    - master deux
-    - master deuxième année
-    - deuxième année de master
 - synonym: ilsen
   examples: |
     - ingénierie du logiciel de la sociéte numérique
@@ -165,109 +210,3 @@ nlu:
 - synonym: sicom
   examples: |
     - systèmes informatiques communicant
-- lookup: SECTION
-  examples: |
-    - licence 1
-    - licence 2
-    - licence 3
-    - licence un
-    - licence deux
-    - licence trois
-    - master un
-    - master deux
-    - master 1
-    - master 2
-    - doctorant
-    - doctorat
-    - l1
-    - l2
-    - l3
-    - m1
-    - m2
-    - première année de licence
-    - deuxième année de licence
-    - troisième année de licence
-    - première année de master
-    - deuxième année de master
-- lookup: GROUP
-  examples: |
-    - alternant
-    - classique
-    - application 1
-    - application 2
-    - application 3
-    - application 4
-    - e-commerce
-    - e-com
-    - ingedoc
-    - ingenieur documentaire
-- lookup: SPEC
-  examples: |
-    - ilsen
-    - ia
-    - sicom
-- intent: intent_room
-  examples: |
-    - je cherche un salle libre
-    - quelles sont les salles libres
-    - j'aurai besoin d'un salle libre
-    - un endroit pour travailler
-    - une salle de travailler
-    - j'aurai besoin de savoir ou je peux travailler
-
-- intent: intent_room_requirement
-  examples: |
-    - pendant [3 heure](DURATION) de [11 heure 30](START) à [14 heure 30](END)
-    - je veux une salle de [16h](START) à [17h30](END) pendant [1h30](DURATION)
-    - si possible de [8 heures 30](START) à [13 heures](END) pendant [4 heures 30](DURATION)
-
-- lookup: ROOM
-  examples: |
-    - ada
-    - blaise
-    - cisco
-    - electronique
-    - reseaux
-    - robotique
-    - s1
-    - s2
-    - s2 bis
-    - s3
-    - s4
-    - s5
-    - s6
-    - s7
-    - s8
-    - stat 1
-    - stat 2
-    - stat 3
-    - stat 4
-    - stat 5
-    - stat 6
-    - stat 7
-    - stat 8
-    - stat9
-
-- intent: intent_get_direction
-  examples: |
-    - où est la salle [s1] (ROOM)
-    - je cherche l'amphitheatre [ada] (ROOM)
-    - pourrais-tu me dire ou est la salle [blaise] (ROOM)
-    - dit moi ou est situé la salle [stat 1] (ROOM)
-
-- intent: intent_direction
-  examples: |
-    - j'aimerai savoir ou est une salle
-    - je cherche une salle
-    - je cherche un amphi
-    - j'aimerai savoir ou est un amphitheatre
-    - je cherche mon chemin
-    - je cherche la salle [stat 1](ROOM)
-    - je cherche l'amphitheatre [blaise](ROOM)
-
-- intent: intent_ask_function
-  examples: |
-    - quelles sont tes fonctionnalités?
-    - quelles sont tes services?
-    - quelles services rends tu?
-    - que fais tu ?

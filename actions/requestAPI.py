@@ -10,7 +10,7 @@ def getCodeBySection(section, spec):
     request = rq.get(newUrl).json()
     response = ""
 
-    if section or spec is None:
+    if section is None or spec is None:
         return
 
     for row in request['results']:
@@ -66,7 +66,7 @@ def getScheduleByPromo(section, spec, current_dt):
 
         if current_dt < dt_start < dt_end:
             # print("INFO ==> "+dt_start.strftime("%Y-%m-%dT%H:%M:%S")+" / "+current_dt.strftime("%Y-%m-%dT%H:%M:%S")+"/"+dt_end.strftime("%Y-%m-%dT%H:%M:%S"))
-            # print(row['title'])
+            print(row['title'])
             hour = str(int(row['start'][11:13]) + tz) + "h" + row['start'][14:16]  # format with timeZone
 
             response.append(row['title'] + "\n Heure :" + hour)

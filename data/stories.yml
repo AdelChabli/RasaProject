@@ -112,6 +112,72 @@ stories:
   - intent: greet
   - action: utter_greet
   - action: utter_available
-  - intent: give_intent
-  - action: intent_room
+  - intent: intent_room
   - action: action_give_room
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_available
+  - intent: intent_get_direction
+    entities:
+    - ROOM: ada
+  - slot_was_set:
+    - ROOM: ada
+  - action: action_get_direction
+  - action: utter_what_next
+  - intent: deny
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_available
+  - intent: intent_get_direction
+    entities:
+    - ROOM: blaise
+  - slot_was_set:
+    - ROOM: blaise
+  - action: action_get_direction
+  - action: utter_what_next
+  - intent: deny
+  - action: utter_goodbye
+  - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_available
+  - intent: intent_get_direction
+    entities:
+    - ROOM: blaise
+  - slot_was_set:
+    - ROOM: blaise
+  - action: action_get_direction
+  - action: utter_what_next
+  - intent: deny
+  - action: utter_goodbye
+  - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_available
+  - intent: intent_schedule
+  - action: utter_ask_section
+  - intent: give_section
+    entities:
+    - SECTION: m2
+    - SPEC: ilsen
+  - slot_was_set:
+    - SECTION: m2
+  - slot_was_set:
+    - SPEC: ilsen
+  - action: action_get_schedule
+  - action: utter_what_next
+  - intent: deny
+  - action: utter_goodbye
+  - action: action_restart

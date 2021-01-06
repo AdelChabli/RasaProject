@@ -2,16 +2,17 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- greet
+- intent_schedule
 - give_section
+- deny
+- intent_get_direction
 - give_group
 - give_intent
 - give_requirement
-- intent_schedule
 - intent_room
-- greet
 - goodbye
 - affirm
-- deny
 - mood_great
 - mood_unhappy
 - bot_challenge
@@ -19,17 +20,16 @@ intents:
 - ask_info
 - ask_schedule
 - intent_direction
-- intent_get_direction
 - intent_room_requirement
 - intent_ask_function
 entities:
+- DURATION
+- END
 - GROUP
+- ROOM
 - SECTION
 - SPEC
-- DURATION
 - START
-- END
-- ROOM
 slots:
   DURATION:
     type: text
@@ -38,6 +38,9 @@ slots:
     type: text
     influence_conversation: true
   GROUP:
+    type: text
+    influence_conversation: true
+  ROOM:
     type: text
     influence_conversation: true
   SECTION:
@@ -54,6 +57,8 @@ slots:
     auto_fill: false
     influence_conversation: true
 responses:
+  utter_what_next:
+  - text: Avez vous encore besoin de moi ?
   utter_ask_group:
   - text: Et maintenant j'aurai besoin de savoir ton groupe!
   utter_greet:
@@ -64,7 +69,8 @@ responses:
   - text: Je suis à votre disposition.
   - text: Que puis-je faire pour vous?
   utter_goodbye:
-  - text: Ce fût un plaisir ! Aurevoir et à bientôt sur les Internet !
+  - text: Ce fût un plaisir ! Aurevoir !
+  - text: Aurevoir !
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
     text: "Tiens j'ai ça pour te remonter le morale :"
@@ -79,20 +85,23 @@ responses:
   utter_success:
   - text: Je suis content que mes services aient pu vous aider !
   utter_get_intent:
-  - text: Je peux vous orienter si vous cherchez une salle en particulier. Je peux
-      vous fournir les salles disponibles dans créneaux voulu. Je peux vous renseigner
-      sur vos cours à venir. Et pour finir, je peux transmettre un message à un enseignant
-      si vous le desirez.
+  - text: Je peux vous orienter si vous cherchez une salle en particulier. Je peux vous fournir les salles disponibles dans créneaux voulu. Je peux vous renseigner sur vos cours à venir. Et pour finir, je peux transmettre un message à un enseignant si vous le desirez.
   utter_ask_section:
-  - text: J'ai besoin de savoir le nom de ta formation et son année. Exemple je suis
-      en licence 1!
+  - text: J'ai besoin de savoir le nom de ta formation et son année. Exemple je suis en licence 1!
   utter_ask_direction:
   - text: Je vous écoute, qu'elle est la salle que vous cherchez ?
   - text: Quelle salle ?
 actions:
+- action_get_direction
 - action_get_schedule
 - action_get_schedule_with_group
 - action_give_room
-- action_get_direction
+- intent_get_direction
 - intent_room
 - intent_schedule
+- utter_ask_section
+- utter_available
+- utter_goodbye
+- utter_greet
+- utter_what_next
+version: '2.0'

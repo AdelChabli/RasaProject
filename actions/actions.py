@@ -16,7 +16,7 @@ from db_sqlite import select_data
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet
+from rasa_sdk.events import SlotSet, FollowupAction
 
 
 class ActionGetSchedule(Action):
@@ -31,8 +31,7 @@ class ActionGetSchedule(Action):
         section = tracker.get_slot('SECTION')
         spec = tracker.get_slot('SPEC')
 
-        # if api.isMultipleLesson(section, spec):
-        if True:
+        if api.isMultipleLesson(section, spec):
             return [SlotSet("isMultipleLesson", True)]
 
         now = datetime.now().astimezone()
@@ -107,8 +106,10 @@ class ActionGetDirection(Action):
         title = select_data(room)
         if title == "":
             text = "Je ne connais pas cette salle."
+            dispatcher.utter_message(text)
+            return [FollowupAction('action_back')]
         else:
             text = title
-        dispatcher.utter_message(text)
+            dispatcher.utter_message(text)
 
         return []

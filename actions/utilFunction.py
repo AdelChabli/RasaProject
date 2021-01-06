@@ -1,6 +1,6 @@
 def respForAllLesson(response):
     resp = "Vous allez avoir " + str(len(response)) + " cours, "
-    for ele in response:
+    for ele in response[::-1]:
         resp += convertToSentence(ele)
 
     return resp
