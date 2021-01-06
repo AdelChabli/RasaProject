@@ -1,7 +1,5 @@
 version: "2.0"
-
 stories:
-
 - story: info path
   steps:
   - intent: greet
@@ -9,7 +7,6 @@ stories:
   - action: utter_available
   - intent: intent_ask_function
   - action: utter_get_intent
-
 - story: short schedule
   steps:
   - intent: greet
@@ -24,9 +21,8 @@ stories:
     - SECTION: l1
   - action: action_get_schedule
   - slot_was_set:
-      - isMultipleLesson: false
+    - isMultipleLesson: false
   - action: utter_goodbye
-
 - story: short schedule 2
   steps:
   - intent: greet
@@ -41,15 +37,13 @@ stories:
     - SECTION: master 1
   - action: action_get_schedule
   - slot_was_set:
-      - isMultipleLesson: false
-
+    - isMultipleLesson: false
 - story: short schedule 3
   steps:
   - intent: greet
   - action: utter_greet
   - action: utter_available
   - intent: intent_schedule
-  - action: utter_greet
   - action: utter_ask_section
   - intent: give_section
     entities:
@@ -58,15 +52,13 @@ stories:
     - SECTION: master deux
   - action: action_get_schedule
   - slot_was_set:
-      - isMultipleLesson: false
-
+    - isMultipleLesson: false
 - story: short schedule 4
   steps:
   - intent: greet
   - action: utter_greet
   - action: utter_available
   - intent: intent_schedule
-  - action: utter_greet
   - action: utter_ask_section
   - intent: give_section
     entities:
@@ -75,18 +67,16 @@ stories:
     - SECTION: licence trois
   - action: action_get_schedule
   - slot_was_set:
-      - isMultipleLesson: true
+    - isMultipleLesson: true
   - action: utter_ask_group
   - intent: give_group
   - action: action_get_schedule_with_group
-
 - story: short schedule 5
   steps:
   - intent: greet
   - action: utter_greet
   - action: utter_available
   - intent: intent_schedule
-  - action: utter_greet
   - action: utter_ask_section
   - intent: give_section
     entities:
@@ -106,7 +96,6 @@ stories:
   - slot_was_set:
     - GROUP: classique
   - action: action_get_schedule_with_group
-
 - story: ask for free room
   steps:
   - intent: greet
@@ -128,7 +117,6 @@ stories:
   - action: utter_what_next
   - intent: deny
   - action: utter_goodbye
-
 - story: interactive_story_1
   steps:
   - intent: greet
@@ -144,7 +132,6 @@ stories:
   - intent: deny
   - action: utter_goodbye
   - action: action_restart
-
 - story: interactive_story_1
   steps:
   - intent: greet
@@ -160,7 +147,6 @@ stories:
   - intent: deny
   - action: utter_goodbye
   - action: action_restart
-
 - story: interactive_story_1
   steps:
   - intent: greet

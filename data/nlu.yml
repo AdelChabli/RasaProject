@@ -13,6 +13,7 @@ nlu:
     - yo
     - Bien le bonjour
     - Bonjour
+    - Salut
 - intent: goodbye
   examples: |
     - bonne journée
@@ -145,11 +146,13 @@ nlu:
     - je cherche l'amphitheatre [ada] (ROOM)
     - pourrais-tu me dire ou est la salle [blaise] (ROOM)
     - dit moi ou est situé la salle [stat 1] (ROOM)
-    - Ou est l'amphi [Ada](ROOM) ?
+    - Ou est l'amphi Ada ?
     - je cherche la salle [stat 1](ROOM)
     - je cherche l'amphitheatre [blaise](ROOM)
     - Je cherche l'amphi [ada](ROOM)
     - Je cherche l'amphi [blaise](ROOM)
+    - Ou est l'amphitheatre ada ?
+    - [On m'a dit l'amphitheatre blaise](SECTION)[blaise](ROOM)[blaise](SECTION)
 - intent: intent_direction
   examples: |
     - j'aimerai savoir ou est une salle
@@ -157,12 +160,16 @@ nlu:
     - je cherche un amphi
     - j'aimerai savoir ou est un amphitheatre
     - je cherche mon chemin
+    - Je cherche un amphitheatre
 - intent: intent_ask_function
   examples: |
     - quelles sont tes fonctionnalités?
     - quelles sont tes services?
     - quelles services rends tu?
     - que fais tu ?
+- intent: ask_schedule
+  examples: |
+    - Je voudrai avoir mes cours de la journée
 - synonym: l1
   examples: |
     - licence 1
@@ -176,8 +183,8 @@ nlu:
   examples: |
     - master deux
     - deuxieme annee de master
-    - m deux
     - master 2
+    - m deux
     - master deuxième année
     - deuxième année de master
 - synonym: l3

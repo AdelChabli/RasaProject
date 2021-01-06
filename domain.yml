@@ -85,9 +85,13 @@ responses:
   utter_success:
   - text: Je suis content que mes services aient pu vous aider !
   utter_get_intent:
-  - text: Je peux vous orienter si vous cherchez une salle en particulier. Je peux vous fournir les salles disponibles dans créneaux voulu. Je peux vous renseigner sur vos cours à venir. Et pour finir, je peux transmettre un message à un enseignant si vous le desirez.
+  - text: Je peux vous orienter si vous cherchez une salle en particulier. Je peux
+      vous fournir les salles disponibles dans créneaux voulu. Je peux vous renseigner
+      sur vos cours à venir. Et pour finir, je peux transmettre un message à un enseignant
+      si vous le desirez.
   utter_ask_section:
-  - text: J'ai besoin de savoir le nom de ta formation et son année. Exemple je suis en licence 1!
+  - text: J'ai besoin de savoir le nom de ta formation et son année. Exemple je suis
+      en licence 1!
   utter_ask_direction:
   - text: Je vous écoute, qu'elle est la salle que vous cherchez ?
   - text: Quelle salle ?
@@ -104,4 +108,3 @@ actions:
 - utter_goodbye
 - utter_greet
 - utter_what_next
-version: '2.0'

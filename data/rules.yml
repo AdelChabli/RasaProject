@@ -11,6 +11,44 @@ stories:
     entities:
     - ROOM: blaise
   - action: action_get_direction
+- story: Story from Conversation ID 5225408b064c47f09cdca7283df6d214
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_available
+  - intent: intent_room
+  - action: utter_ask_direction
+  - intent: intent_get_direction
+    entities:
+    - ROOM: blaise
+  - slot_was_set:
+    - ROOM: blaise
+  - action: action_get_direction
+- story: Story from Conversation ID 4bb11e948fbb4dd8926cb058efab9239
+  steps:
+  - slot_was_set:
+    - ROOM: ada
+  - action: utter_what_next
+  - intent: deny
+  - action: utter_goodbye
+  - action: action_restart
+- story: Story from Conversation ID 981a2b9d7c2f484e8fd7df0e63f67b4e
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_available
+  - intent: intent_get_direction
+    entities:
+    - ROOM: blaise
+  - slot_was_set:
+    - ROOM: blaise
+  - action: action_get_direction
+  - action: utter_what_next
+  - intent: deny
+  - action: utter_goodbye
+  - slot_was_set:
+    - ROOM: blaise
+  - action: action_restart
 rules:
 - rule: Say goodbye anytime the user says goodbye
   steps:

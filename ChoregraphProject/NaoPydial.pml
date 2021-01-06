@@ -8,8 +8,8 @@
     <Resources />
     <Topics />
     <IgnoredPaths>
-        <Path src="Say_Text.py" />
         <Path src="Main.py" />
+        <Path src="Say_Text.py" />
     </IgnoredPaths>
     <Translations auto-fill="en_US">
         <Translation name="translation_en_US" src="translations/translation_en_US.ts" language="en_US" />

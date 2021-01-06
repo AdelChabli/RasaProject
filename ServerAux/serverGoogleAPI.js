@@ -23,7 +23,7 @@ app.get('/status', async function(req, res) {
     });
 });
 
-app.post("/api", jsonParser, async function(req,res) {
+app.post("/wav", jsonParser, async function(req,res) {
 
     let filename = "input.wav";
     let dataWav = req.body.wav;

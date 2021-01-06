@@ -9,8 +9,8 @@ import json
 class MyClass(GeneratedClass):
     def __init__(self):
         GeneratedClass.__init__(self)
-        self.url_rasa = 'http://10.126.2.84:5005'  # IP : serveur rasa
-        self.url_stt = 'http://10.126.2.84:3211'  # IP : serveur speech to text
+        self.url_rasa = 'http://10.120.29.102:5005'  # IP : serveur rasa
+        self.url_stt = 'http://10.120.29.102:3211'  # IP : serveur speech to text
         self.text = ""
         self.user = "user"
 
@@ -243,7 +243,7 @@ import wave
 class MyClass(GeneratedClass):
     def __init__(self):
         GeneratedClass.__init__(self)
-        self.url = 'http://10.126.2.84:3211/wav'  # IP : server google
+        self.url = 'http://10.120.29.102:3211/wav'  # IP : server google
 
     def onLoad(self):
         # put initialization code here
@@ -279,16 +279,20 @@ class MyClass(GeneratedClass):
         method = "POST"
         handler = urllib2.HTTPHandler()
         opener = urllib2.build_opener(handler)
+
+        url = self.url
         data = urllib.urlencode(json_data)
-        request = urllib2.Request(self.url, data=data)
+        request = urllib2.Request(url, data=data)
 
         request.get_method = lambda: method
         try:
             connection = opener.open(request)
-        except urllib2.HTTPError, e:
-            print(urllib2.HTTPError)
-            print(e)
-            connection = e
+            if connection.code == 200:
+                response = connection.read()
+            else:
+                self.onBye("Nothing")
+        except:
+            pass
 
         response = connection.read()
 
