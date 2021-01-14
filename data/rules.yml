@@ -49,6 +49,21 @@ stories:
   - slot_was_set:
     - ROOM: blaise
   - action: action_restart
+- story: Story from Conversation ID 5aeb8e9f2a504d94bb8118750055f0a0
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_available
+  - intent: ask_info
+  - action: utter_get_intent
+- story: Story from Conversation ID f8e7099961e443219eb1b56a658ed28a
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_available
+  - intent: intent_room
+  - action: action_give_room
+  - action: utter_what_next
 rules:
 - rule: Say goodbye anytime the user says goodbye
   steps:

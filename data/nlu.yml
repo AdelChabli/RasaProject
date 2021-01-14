@@ -14,6 +14,7 @@ nlu:
     - Bien le bonjour
     - Bonjour
     - Salut
+    - Salurt
 - intent: goodbye
   examples: |
     - bonne journée
@@ -109,6 +110,8 @@ nlu:
     - quel est mon emploi du temps?
     - ai-je cours?
     - Quelles sont mes cours ?
+    - Quelles sont mes cours
+    - Quels sont mes cours
 - intent: give_section
   examples: |
     - je suis en [licence 1]{"entity": "SECTION", "value": "l1"}
@@ -135,24 +138,31 @@ nlu:
     - un endroit pour travailler
     - une salle de travailler
     - j'aurai besoin de savoir ou je peux travailler
+    - Je cherche une salle
+    - Je cherche une salle libre
 - intent: intent_room_requirement
   examples: |
-    - pendant [3 heure](DURATION) de [11 heure 30](START) à [14 heure 30](END)
-    - je veux une salle de [16h](START) à [17h30](END) pendant [1h30](DURATION)
-    - si possible de [8 heures 30](START) à [13 heures](END) pendant [4 heures 30](DURATION)
+    - pendant [3 heure](DURATION) à partir de [11 heure 30](START)
+    - je veux une salle dès [16h](START) pendant [1h30](DURATION)
+    - si possible à partir [8 heures 30](START) pendant [4 heures 30](DURATION)
+    - à partir de [8h](START) pendant [3h](DURATION)
+    - pendant [3h](DURATION) à partir de [8h30](START)*
 - intent: intent_get_direction
   examples: |
     - où est la salle [s1] (ROOM)
     - je cherche l'amphitheatre [ada] (ROOM)
     - pourrais-tu me dire ou est la salle [blaise] (ROOM)
     - dit moi ou est situé la salle [stat 1] (ROOM)
-    - Ou est l'amphi Ada ?
+    - Ou est l'amphi [Ada](ROOM) ?
     - je cherche la salle [stat 1](ROOM)
     - je cherche l'amphitheatre [blaise](ROOM)
     - Je cherche l'amphi [ada](ROOM)
     - Je cherche l'amphi [blaise](ROOM)
-    - Ou est l'amphitheatre ada ?
-    - [On m'a dit l'amphitheatre blaise](SECTION)[blaise](ROOM)[blaise](SECTION)
+    - Ou est l'amphitheatre [ada](ROOM) ?
+    - Je cherche l'amphitheatre [blaise](ROOM)
+    - Amphitheatre [ada](ROOM)
+    - amphitheatre [blaise](ROOM)
+    - On m'a dit l'amphitheatre [blaise](ROOM)
 - intent: intent_direction
   examples: |
     - j'aimerai savoir ou est une salle
@@ -167,9 +177,6 @@ nlu:
     - quelles sont tes services?
     - quelles services rends tu?
     - que fais tu ?
-- intent: ask_schedule
-  examples: |
-    - Je voudrai avoir mes cours de la journée
 - synonym: l1
   examples: |
     - licence 1

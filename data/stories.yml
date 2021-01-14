@@ -167,3 +167,21 @@ stories:
   - intent: deny
   - action: utter_goodbye
   - action: action_restart
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_available
+  - intent: intent_room
+  - action: utter_ask_param_time
+  - intent: intent_room_requirement
+    entities:
+    - DURATION: 3h
+    - START: 8h30
+  - slot_was_set:
+    - DURATION: 3h
+  - slot_was_set:
+    - START: 8h30
+  - action: action_give_room
+  - action: utter_what_next

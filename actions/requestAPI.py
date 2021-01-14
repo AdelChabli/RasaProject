@@ -112,6 +112,7 @@ def free_room(duration, start, date):
     response = ""
 
     new_dt = new_dt.replace("-", " ")
+    h_start = h_start + tz                  # On remet le fuseau horaire
     h_start = uti.add_hour(h_start)
     dur = uti.add_hour(dur)
 

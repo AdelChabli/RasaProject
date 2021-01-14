@@ -83,9 +83,9 @@ class ActionGiveRoom(Action):
         duration = tracker.get_slot('DURATION')
         hour_start = tracker.get_slot('START')
         date = datetime.now().astimezone()
-        title = ""
+        title = api.free_room(duration, hour_start, date)
         if title == "":
-            text = "Vous n'avez pas cours actuellement"
+            text = "Il n'y a pas de salle disponible pour l'instant"
         else:
             text = title
         dispatcher.utter_message(text)

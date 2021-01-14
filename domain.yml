@@ -1,8 +1,11 @@
+version: '2.0'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
 - greet
+- intent_room_requirement
+- intent_room
 - intent_schedule
 - give_section
 - deny
@@ -10,7 +13,6 @@ intents:
 - give_group
 - give_intent
 - give_requirement
-- intent_room
 - goodbye
 - affirm
 - mood_great
@@ -20,7 +22,6 @@ intents:
 - ask_info
 - ask_schedule
 - intent_direction
-- intent_room_requirement
 - intent_ask_function
 entities:
 - DURATION
@@ -85,16 +86,14 @@ responses:
   utter_success:
   - text: Je suis content que mes services aient pu vous aider !
   utter_get_intent:
-  - text: Je peux vous orienter si vous cherchez une salle en particulier. Je peux
-      vous fournir les salles disponibles dans créneaux voulu. Je peux vous renseigner
-      sur vos cours à venir. Et pour finir, je peux transmettre un message à un enseignant
-      si vous le desirez.
+  - text: Je peux vous orienter si vous cherchez une salle en particulier. Je peux vous fournir les salles disponibles dans créneaux voulu. Je peux vous renseigner sur vos cours à venir. Et pour finir, je peux transmettre un message à un enseignant si vous le desirez.
   utter_ask_section:
-  - text: J'ai besoin de savoir le nom de ta formation et son année. Exemple je suis
-      en licence 1!
+  - text: J'ai besoin de savoir le nom de ta formation et son année. Exemple je suis en master 2 ILSEN!
   utter_ask_direction:
   - text: Je vous écoute, qu'elle est la salle que vous cherchez ?
   - text: Quelle salle ?
+  utter_ask_param_time:
+  - text: J'aurai besoin de savoir à partir de quelle heure vous la voulez et pendant combien de temps?
 actions:
 - action_get_direction
 - action_get_schedule
@@ -103,6 +102,7 @@ actions:
 - intent_get_direction
 - intent_room
 - intent_schedule
+- utter_ask_param_time
 - utter_ask_section
 - utter_available
 - utter_goodbye
